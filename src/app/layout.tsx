@@ -21,7 +21,10 @@ export const metadata: Metadata = {
   title: {
     default: "The Political Scene",
     template: "%-The Political Scene"
-  }
+  },
+  twitter:{
+    card:"summary_large_image"
+  },  
 };
 export default function RootLayout({
   children,

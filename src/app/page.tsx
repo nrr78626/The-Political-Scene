@@ -6,6 +6,17 @@ import { Metadata } from "next";
 import axios from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
 
+export async function generateStaticParams(){
+  const response = await axios.get<ApiResponse>(`${process.env.NEXT_PUBLIC_HOST}/api/create-blog`,{
+    headers:{
+      "Content-Type":"application/json"
+    }
+  })
+  const data = await response.data.payload.slice(0,10)
+
+  return data.map((id:any)=> id)
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const allBlogs = await axios.get<ApiResponse>(`${process.env.NEXT_PUBLIC_HOST}/api/create-blog`, {
     headers: {
@@ -90,5 +101,4 @@ export default async function Home() {
     </main>
   );
 }
-
 export const dynamic = 'force-dynamic'

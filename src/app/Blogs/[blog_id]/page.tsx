@@ -6,7 +6,6 @@ import { Metadata } from 'next'
 import axios from 'axios'
 import { ApiResponse } from '@/types/ApiResponse'
 
-
 export async function generateMetadata({ params }: { params: Promise<{ blog_id: string }> }): Promise<Metadata> {
     const blog_id = (await params).blog_id
     const response = await axios.get<ApiResponse>(`${process.env.NEXT_PUBLIC_HOST}/api/current-blog`, {
@@ -34,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ blog_id: 
             address: false,
             telephone: false
         },
-        keywords:key,
+        keywords: key,
         openGraph: {
             images: [
                 {
