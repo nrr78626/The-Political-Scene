@@ -1,6 +1,6 @@
 
 export interface ApiResponse {
-    success:boolean,
-    message:string,
+    success?:boolean,
+    message?:string,
     payload?:any
 }
